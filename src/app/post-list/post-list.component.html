@@ -1,0 +1,29 @@
+<p></p>
+<ul *ngFor="let post of posts">
+  <table>
+    <thead [ngClass]="{'list-group-item': true, 
+                        'list-group-item-success': post.postLoveIts > 0,
+                        'list-group-item-danger': post.getCreated_at() < 0}">
+      <tr>
+        <td class="design"> {{ post.postTitle }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="design-date"><span class="design-td">{{ post.created_at | date: 'short' }}</span></td>
+      </tr>
+    </thead>
+    <tbody [ngClass]="{'list-group-item': true, 
+                        'list-group-item-success': post.postLoveIts > 0,
+                        'list-group-item-danger': post.postLoveIts < 0}">
+      <tr>
+        <td colspan="2">{{ post.postContent }}</td>
+      </tr>
+      <tr>
+        <td colspan="2"> {{ post.postLoveIts }}&nbsp;Like it</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button name="loveIt" class="btn btn-success" (click)="post.loveIts()">love it</button>&nbsp;&nbsp;
+          <button name="dontLoveIt" class="btn btn-danger" (click)="post.dontLoveIts()">Don't love It</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ul>
